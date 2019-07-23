@@ -1,0 +1,33 @@
+.preview-container{
+    /* width: 350px; */
+    width: 90%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 10px;
+    background-color: white;
+    border-radius: 3px;
+    clip-path: polygon(0% 0%, 100% 0, 100% 88%, 50% 100%, 0 88%);
+}
+
+.preview-container h2 {
+    margin: 15px 0 0 0;
+    text-align: center;
+    /* color: #f71e43; */
+    color: #424244e6;
+    font-family: 'PT Sans Narrow', sans-serif;
+    letter-spacing: 1px;
+}
+
+.group-image {
+    height: 70%;
+    width: 100%;
+    background-size: cover;
+    border-radius: 3px 3px 0 0;
+}
+.group-details{
+    height: 30%;
+
+}

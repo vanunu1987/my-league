@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans|PT+Sans+Narrow:700|Righteous&display=swap');
+
+body {
+  margin: 0;
+  /* font-family: 'Noto Sans', sans-serif, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  font-family: 'Righteous', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  box-sizing: border-box;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+button {
+  /* font-family: 'Righteous', cursive; */
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

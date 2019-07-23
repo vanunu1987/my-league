@@ -1,0 +1,9 @@
+.nav a.active,
+.nav a{
+
+    text-decoration: none;
+    list-style: none;
+    color: #eee;
+    padding: 5px;
+
+}

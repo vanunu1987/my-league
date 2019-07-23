@@ -1,0 +1,14 @@
+.header{
+    height: 90vh;
+    width: 100%;
+    /* background-color: #f71e43; */
+    background-color: #1c1c1f;
+    /* background-color: #0e0e0e; */
+    box-sizing: border-box;
+    border-width: 80px 40px 20px;
+    border-color: #eeeeee;
+    border-style: solid;
+    display: flex;
+    justify-content: space-between;
+  
+}

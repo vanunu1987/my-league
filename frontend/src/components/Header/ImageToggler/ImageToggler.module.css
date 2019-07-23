@@ -1,0 +1,12 @@
+.player-image{
+    height: 110%;
+    width: 350px;
+    background-size: cover;
+    /* padding-right: 100px; */
+    box-sizing: border-box;
+    transition: .2s ease;
+    position: relative;
+    /* top: -38px; */
+    bottom: 10%;
+
+}
