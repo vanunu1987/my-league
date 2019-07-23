@@ -9,6 +9,13 @@ const addRoutes = (app) => {
             .then(groups =>  res.json(groups))
     })
 
+    app.get(`${BASE}/:groupId`, (req, res) => {
+        let {groupId} = req.params
+        console.log('groupId : ',groupId);
+        groupService.getById(groupId)
+            .then(group =>  res.json(group))
+    })
+
 }
 
 
