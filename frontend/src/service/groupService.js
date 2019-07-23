@@ -1,3 +1,12 @@
+import Axios from 'axios';
+
+var axios = Axios.create({
+    withCredentials: true
+});
+
+const BASE_URL = (process.env.NODE_ENV !== 'development') ? '/groups' : '//localhost:3003/groups';
+
+
 const GROUPS = [
     {
         _id:1,
@@ -32,7 +41,9 @@ const GROUPS = [
 ]
 
 const loadGroups = () => {
-    return Promise.resolve(GROUPS)
+    // return Promise.resolve(GROUPS)
+    const response = await axios.get(`${BASE_URL}`)
+    return response.data
 }
 
 const findGroupById = (id)=>{
