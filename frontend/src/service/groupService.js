@@ -43,6 +43,8 @@ const GROUPS = [
 const loadGroups = async () => {
     // return Promise.resolve(GROUPS)
     const response = await axios.get(`${BASE_URL}`)
+    console.log(response.data);
+    
     return response.data
 }
 
