@@ -5,7 +5,7 @@ function connectToMongo() {
     if (dbConn) return Promise.resolve(dbConn);
     const MongoClient = require('mongodb').MongoClient;
     
-    const url = 'mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTERNAME>-<DABERITI>.mongodb.net/<DBNAME>?retryWrites=true'
+    const url = 'mongodb+srv://yair1987:vanunu1987@Cluster0-sr49g.mongodb.net/my-league?retryWrites=true'
 
     
     return MongoClient.connect(url,{useNewUrlParser: true})
