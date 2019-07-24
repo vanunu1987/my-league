@@ -1,5 +1,6 @@
 const axios = require('axios');
 const mongoService = require('./mongoService')
+const ObjectId = require('mongodb').ObjectId;
 
 // const GROUPS = [
 //     {
@@ -29,13 +30,18 @@ const mongoService = require('./mongoService')
 // ]
 
 
+const loadGroups = async () => {
+    let db = await mongoService.connect()
+    let respone = await  db.collection('groups').find({}).toArray()
+    return respone
+}
 
-function loadGroups() {
-    return mongoService.connect()
-        .then((db) => {
-            console.log('in service');
-            return db.collection('groups').find({}).toArray()
-        })
+const getById = async (id) => {
+    let _id = new ObjectId(id)
+    let db = await mongoService.connect()
+    let response = await db.collection('groups').findOne({_id})
+    console.log('respone : ',response)
+    return response
 }
 
 // (function _addGroups() {
@@ -46,7 +52,10 @@ function loadGroups() {
 // })()
 
 
+
+
 module.exports = {
     loadGroups,
+    getById
 
 }
