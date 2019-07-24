@@ -2,14 +2,14 @@
 import React, {Component} from 'react'
 import Leadchart from '../../components/LeadChart/LeadChart'
 import groupService from '../../service/groupService';
-import Nav from '../../components/Header/Nav/Nav'
 class GroupPage extends Component {
     state = { 
         group: null
      }
 
      async componentDidMount(){
-      let group =  await   groupService.findGroupById(+this.props.match.params.id)
+    console.log('this.props.match.params.id : ',this.props.match.params.id);
+      let group =  await groupService.findGroupById(this.props.match.params.id)
         console.log(group);
         this.setState({group})
         
@@ -21,7 +21,6 @@ class GroupPage extends Component {
         return ( 
             <>
             <header>
-                <Nav/>
                 {img}
                 {name}
             </header>

@@ -3,27 +3,31 @@ import classes from './Header.module.css'
 import SearchBar from './SearchBar/SearchBar'
 import Leadchart from '../LeadChart/LeadChart';
 import ImageToggler from './ImageToggler/ImageToggler'
-import Nav from './Nav/Nav'
 
 class header extends Component {
     state = { 
-        imgNum:0
+        imgNum:0,
+        toggleImage:null
      }
 
     componentDidMount(){
-        setInterval(() => {
+     const toggleImage =  setInterval(() => {
             this.setState(prevState => {
                 let imgNum = (prevState.imgNum === 3) ? 0 : prevState.imgNum + 1
                 return {imgNum}
-            })
-        }, 7000);
+            })}, 7000)
+            
+    this.setState({toggleImage})
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.state.toggleImage)
     }
 
     render() {
       
         return ( 
         <div className={classes.header}>
-        <Nav/>
         <SearchBar 
         searchGroup={this.props.searchGroup}
         inputChange={this.props.inputChange}
