@@ -1,5 +1,5 @@
 .preview-container{
-    /* width: 350px; */
+    cursor: pointer;
     width: 90%;
     height: 400px;
     display: flex;
@@ -34,4 +34,8 @@
     height: 30%;
     width: 100%;
     background-color: #ffffffd6;
+}
+.group-details p{
+    text-align: center;
+    margin: 3px 0 5px;
 }
