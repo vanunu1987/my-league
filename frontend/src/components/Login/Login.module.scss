@@ -1,26 +1,26 @@
-.loginContiner{
+.loginContainer{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 201;
+    position: fixed;
 
 
     
   }
-  .home{
-    // border: 1px solid;
+  .formContainer{
     width: 400px;
     height: 415px;
     border-radius: 5px;
-     background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-color: white;
-      color: #555556;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+    color: #555556;
     clip-path: polygon(0% 0%, 100% 0, 100% 88%, 50% 100%, 0 88%);
-    position: fixed;
-    top: 100px;
-    left: 530px;
     z-index: 201;
     text-align: center;
       
@@ -36,24 +36,24 @@
     text-align: center;
   }
   .loginForm{
-    top: 175px;
-  //  height: 90%;
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     align-items: center;
     margin-top: 25px;
     height: 65%;
     text-align: center;
     justify-content: space-between;
+
+    header {
+      height: 210px;
+    }
     div:focus-within{
-     border-color: lighten(#1dbf73,5%);
+    border-color: lighten(#db5857,5%);
     }
     div{
        padding:3px;
        border:1px solid black;
        display:flex;
-       justify-content: space-between;
        align-items: center;
        margin-bottom:10px;
        border-radius: 5px;
@@ -82,8 +82,12 @@
     color: white;
     padding: 15px;
     border-radius: 3px;
+    border: none;
+    cursor: pointer;
     width: 300px;
     font-size: 1rem;
+    transition: .3s ease;
+
     &:hover{
       background-color:lighten(#db5857,5%);
     }
@@ -99,8 +103,8 @@
     }
     @media (max-width: 740px){
         
-        .home{
-            left: 6%;
-            width: 70%;
-        }
-    }
+  .home{
+    left: 6%;
+    width: 70%;
+  }
+}

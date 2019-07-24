@@ -1,97 +1,71 @@
 import React, {Component} from 'react'
 import classes from './Login.module.scss'
 import userService from '../../service/userService'
+import SignIn from './SignIn/SignIn'
+import SignUp from './SignUp/SignUp'
 
 class login extends Component {
     state = { 
         login : true,
         show: false,
-        data: {
-            userName: null,
+        credentials: {
+            name: null,
             pass: null,
             phone: null
         }
      }
 
 
-     hendelLoginSignin = ()=>{
-         let updateLogin = !(this.state.login)
-         this.setState({login:updateLogin})
+     handleLoginSignUp = () => {
+        this.setState(prevState => {
+            let login = !prevState.login
+            return {login}
+        })
+    }
+
+    handleInputs = (ev,val)=>{
+        this.setState(prevState => {
+            let credentials = {...prevState.credentials}
+            credentials[val] =  ev
+            return {credentials}
+
+        })
      }
 
-     hendlInputs = (ev,val)=>{
-         let newData = {...this.state.data}
-         newData[val] =  ev
-         this.setState({data:newData})
-         console.log(this.state.data);
-         
-     }
+    handleSubmitLogin = async (ev) => {
+        ev.preventDefault()
+        let {name,pass} = this.state.credentials
+        let res = await userService.loginUser({name,pass})
+        console.log('res : ',res);
+        if (res) this.props.loginUser()
+    }
 
-     hendelSubmitLogin (){
-      userService.logedinUser(this.state.data)
-     }
-     hendelSubmitSignin (){
-      userService.signinUser(this.state.data)
-     }
+    handleSubmitSignUp  = async (ev) => {
+        ev.preventDefault()
+        let res = await userService.signUpUser(this.state.credentials)
+    }
+
     render() { 
-        let login = (  !this.state.login&&
-            <form className={classes.loginForm} action="" onSubmit={(ev)=>this.hendelSubmitLogin(ev.preventDefault())}>
-                <header>
-                    <h1>Login</h1>
-                    <div>
-                        <input className={classes.carId} type="text" placeholder="User Name" 
-                        onChange={(event)=>this.hendlInputs(event.target.value,'userName')}/>
-                        <i className="fas fa-user"></i>
-                    </div>
-                    <div>
-                        <input className={classes.carPass} type="password" placeholder="Password"
-                        onChange={(event)=>this.hendlInputs(event.target.value,'pass')}/>
-                        <i className="fas fa-lock"></i>
-                    </div>
-                </header>
-                <button type="submit">Log in </button>
-            </form>
+        let login = (  !this.state.login &&
+        <SignIn classes={classes} submitLogin={this.handleSubmitLogin} inputChange={this.handleInputs}/>
 
             )
-        let signup = ( this.state.login&&
-            <form className={classes.loginForm} action="" onSubmit={(ev)=>this.hendelSubmitSignin(ev.preventDefault())}>
-                <header>
-                    <h1>Signup</h1>
-                    <div>
-                        <input className={classes.carId} type="text" placeholder="User Name"
-                        onChange={(event)=>this.hendlInputs(event.target.value,'userName')}/>
-                        <i className="fas fa-user"></i>
-                    </div>
-                    <div>
-                        <input className={classes.carPass} type="password" placeholder="password"
-                        onChange={(event)=>this.hendlInputs(event.target.value,'pass')}/>
-                        <i className="fas fa-lock"></i>
-                    </div>
-                    <div>
-                        <input className={classes.carId} type="tel" placeholder="Phone Number"
-                        onChange={(event)=>this.hendlInputs(event.target.value,'phone')}/>
-                        <i className="fas fa-phone"></i>
-                    </div>
-                </header>
-                <button type="submit">Sign up</button>
-            </form>
+        let signup = ( this.state.login &&
+        <SignUp classes={classes} submitSignUp={this.handleSubmitSignUp} inputChange={this.handleInputs}/>
+
         )    
-        let msg = (this.state.login)? <span>Already </span> :<span>Don't </span>
-        let loginSignin = (this.state.login)? 
-        <span className={classes.signupLink} onClick={this.hendelLoginSignin}> Login</span> : 
-        <span className={classes.signupLink} onClick={this.hendelLoginSignin}> Singin</span>
-        let body = this.props.show && <div className={classes.loginContiner}>
-        <section className={classes.home}>
+        let msg = (this.state.login) ? <span>Already have an account?&nbsp;</span> :<span>Don't have an account?&nbsp;</span>
+        let loginSignUp = <span className={classes.signupLink} onClick={this.handleLoginSignUp}>{this.state.login ? ' Login' : ' Sing in'} </span>
+        let body = this.props.show && <div className={classes.loginContainer}>
+        <section className={classes.formContainer}>
             {login}
             {signup}
             {msg}
-            <span>have an account?</span>
-            {loginSignin}
+            {loginSignUp}
         </section>
     </div>
 
         return (
-            
             <>
                 {body}
             </>
