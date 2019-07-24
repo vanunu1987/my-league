@@ -3,13 +3,16 @@ import Header from '../../components/Header/Header'
 import GroupList from '../../components/GroupList/GroupList'
 import groupService from '../../service/groupService'
 import userService from '../../service/userService'
+import Login from '../../components/Login/Login'
+import BackDrop from '../../components/UI/Backdrop/Backdrop'
 
 
 class Home extends Component {
     state = {
         groups: [],
         users:[],
-        inputText:''
+        inputText:'',
+        isLoginShow: true
     }
 
     async componentDidMount() {
@@ -34,6 +37,11 @@ class Home extends Component {
         })
     }
 
+    hendelBackDrop = ()=>{
+        let isLogdin = !this.state.isLoginShow
+        this.setState({isLoginShow: isLogdin })
+    }
+
     render() {
         return (
             <>
@@ -44,6 +52,9 @@ class Home extends Component {
                 users={this.state.users}
                 />
                 <GroupList groups={this.state.groups}/>
+                <Login show={this.state.isLoginShow}/>
+                <BackDrop clicked={this.hendelBackDrop} show={this.state.isLoginShow}/>
+
             </>
         );
     }

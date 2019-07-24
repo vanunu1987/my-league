@@ -46,14 +46,26 @@ const loadUsers = async () => {
     //     return user
     // } )
     // return Promise.resolve(users)
-
     const response = await axios.get(`${BASE_URL}`)
     return response.data.map((user,idx) => {
         user.rank = idx+1
         return user
     })
 }
+const logedinUser = async (data)=>{
+    const response = await axios.get(`${BASE_URL}`,data)
+    return response.data
+}
+const signinUser = async (data)=>{
+    const response = await axios.get(`${BASE_URL}`,data)
+    return response.data
+}
+    
+
 
 export default {
-    loadUsers
+    loadUsers,
+    logedinUser,
+    signinUser
+
 }

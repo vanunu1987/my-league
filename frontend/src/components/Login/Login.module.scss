@@ -1,0 +1,106 @@
+.loginContiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+
+    
+  }
+  .home{
+    // border: 1px solid;
+    width: 400px;
+    height: 415px;
+    border-radius: 5px;
+     background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: white;
+      color: #555556;
+    clip-path: polygon(0% 0%, 100% 0, 100% 88%, 50% 100%, 0 88%);
+    position: fixed;
+    top: 100px;
+    left: 530px;
+    z-index: 201;
+    text-align: center;
+      
+  }
+  .carId{
+    // top: 157px;
+    border-radius: 5px;
+    text-align: center;
+  
+  }
+  .carPass{
+     border-radius: 5px;
+    text-align: center;
+  }
+  .loginForm{
+    top: 175px;
+  //  height: 90%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    height: 65%;
+    text-align: center;
+    justify-content: space-between;
+    div:focus-within{
+     border-color: lighten(#1dbf73,5%);
+    }
+    div{
+       padding:3px;
+       border:1px solid black;
+       display:flex;
+       justify-content: space-between;
+       align-items: center;
+       margin-bottom:10px;
+       border-radius: 5px;
+       width: 190px;
+       background-color: white;
+   
+       i{
+         margin-right:5px;
+         color: #555556;
+         margin-left: 3px;
+       }
+     }
+     
+     input {
+       height: 25px;
+       border-radius: 5px;
+       width: 100%;
+       outline:none;
+       border-style: none;
+       border: 1px solid;
+       font-size: .9rem;
+     }
+     button{
+    margin-bottom:12px;
+    background-color:#db5857;
+    color: white;
+    padding: 15px;
+    border-radius: 3px;
+    width: 300px;
+    font-size: 1rem;
+    &:hover{
+      background-color:lighten(#db5857,5%);
+    }
+  }
+  }
+    .signupLink{
+      font-weight: 500;
+      cursor: pointer;
+      color: #db5857;
+      &:hover{
+        color: darken(#db5857,15%);
+      }
+    }
+    @media (max-width: 740px){
+        
+        .home{
+            left: 6%;
+            width: 70%;
+        }
+    }
