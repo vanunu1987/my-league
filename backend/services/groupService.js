@@ -30,12 +30,10 @@ const ObjectId = require('mongodb').ObjectId;
 // ]
 
 
-
-function loadGroups() {
-    return mongoService.connect()
-        .then((db) => {
-            return db.collection('groups').find({}).toArray()
-        })
+const loadGroups = async () => {
+    let db = await mongoService.connect()
+    let respone = await  db.collection('groups').find({}).toArray()
+    return respone
 }
 
 const getById = async (id) => {
@@ -52,6 +50,8 @@ const getById = async (id) => {
 //             return db.collection('groups').insertMany(GROUPS)
 //         })
 // })()
+
+
 
 
 module.exports = {
