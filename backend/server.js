@@ -8,6 +8,8 @@ const addGroupRoutes = require('./routes/groupRoute')
 const addUserRoutes = require('./routes/userRoute')
 require('dotenv').config()
 
+const eventService = require('./services/eventService')
+
 const app = express()
 app.use(cors({
   origin: ['http://localhost:3000'],

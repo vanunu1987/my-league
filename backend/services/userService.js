@@ -1,49 +1,32 @@
 const mongoService = require('./mongoService')
 const axios = require('axios');
 
-// const USERS = [
-//     {
-//         name: 'Muki',
-//         groups: [],
-//         score: 100
-//     },
-//     {
-//         name: 'Puki',
-//         groups: [],
-//         score: 10
-//     },
-//     {
-//         name: 'Shuki',
-//         groups: [],
-//         score: 93
-//     },
-//     {
-//         name: 'Dima',
-//         groups: [],
-//         score: 111
-//     },
-//     {
-//         name: 'Sima',
-//         groups: [],
-//         score: 62
-//     }
-// ]
+const USERS = [
+    {
+        name: 'Shawn',
+        groups: [],
+        score: 20
+    }
+]
 
-
-function loadUsers() {
-    return mongoService.connect()
-        .then((db) => {
-            return db.collection('users').find({}).toArray()
-        })
+const loadUsers = async () => {
+    let db = await mongoService.connect()
+    let response = await db.collection('users').find({}).sort({score:-1}).limit(5).toArray()
+    return response
 }
 
 
-// (function _addUsers() {
-//     return mongoService.connect()
-//         .then(db => {
-//             return db.collection('users').insertMany(USERS)
-//         })
+
+// ( async function _addUsers() {
+    
+//     let db = await  mongoService.connect()
+//     let response = await db.collection('users').insertMany(USERS)
+//     console.log('added : ',response);
 // })()
+
+
+
+// insertRandomUsers()
 
 module.exports = {
     loadUsers,
