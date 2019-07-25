@@ -32,30 +32,35 @@ const ObjectId = require('mongodb').ObjectId;
 
 const loadGroups = async () => {
     let db = await mongoService.connect()
-    let respone = await  db.collection('groups').find({}).toArray()
+    let respone = await db.collection('groups').find({}).toArray()
     return respone
 }
 
 const getById = async (id) => {
     let _id = new ObjectId(id)
     let db = await mongoService.connect()
-    let response = await db.collection('groups').findOne({_id})
-    console.log('respone : ',response)
+    let response = await db.collection('groups').findOne({ _id })
+    console.log('respone : ', response)
     return response
 }
 
-// (function _addGroups() {
-//     return mongoService.connect()
-//         .then(db => {
-//             return db.collection('groups').insertMany(GROUPS)
-//         })
-// })()
-
+const addUser = async (group, user) => {
+    let _id = new ObjectId(group._id)
+    let db = await mongoService.connect()
+    let response = await db.collection('groups').findOneAndUpdate(
+        { _id },
+        { $push: { users: user } },
+        { returnOriginal: false }
+    )
+    console.log('add user to group : ', response.value)
+    return response.value
+}
 
 
 
 module.exports = {
     loadGroups,
-    getById
+    getById,
+    addUser
 
 }

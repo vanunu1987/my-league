@@ -6,8 +6,11 @@ const groupList = props =>  (
 
         <ul className={classes['group-list']}>
           {props.groups.map(group => {
-              return <li key={group._id} ><GroupPreview 
-              group={group}/></li> 
+              return <li key={group._id} >
+              <GroupPreview 
+              group={group}
+              updateGroup={props.updateGroup}/>
+              </li> 
             })}
         </ul>
 

@@ -3,8 +3,6 @@ import Header from '../../components/Header/Header'
 import GroupList from '../../components/GroupList/GroupList'
 import groupService from '../../service/groupService'
 import userService from '../../service/userService'
-import Login from '../../components/Login/Login'
-import BackDrop from '../../components/UI/Backdrop/Backdrop'
 
 
 class Home extends Component {
@@ -12,7 +10,7 @@ class Home extends Component {
         groups: [],
         users: [],
         inputText: '',
-        isLoginShow: true
+        currUser: null
     }
 
     async componentDidMount() {
@@ -26,8 +24,21 @@ class Home extends Component {
 
     }
 
-    searchGroupHandler = ev => {
+    handleGroupUpdate = group => {
+        this.setState(prevState => {
+            let { groups } = prevState
+            let updatedGroups = groups.map(g => {
+                if (g._id === groups._id) return group
+                return g
+            })
+            return { groups: updatedGroups }
+        })
+    }
+
+    searchGroupHandler = async ev => {
         ev.preventDefault()
+        let groups = await groupService.loadGroups()
+        this.setState({ groups })
         this.setState(prevState => {
             let groups = prevState.groups.filter(group => group.name.toLowerCase().includes(prevState.inputText.toLowerCase()))
             return {
@@ -37,16 +48,6 @@ class Home extends Component {
         })
     }
 
-    hendleBackDrop = () => {
-        this.setState(prevState => {
-            let isLoginShow = !prevState.isLoginShow
-            return { isLoginShow }
-        })
-    }
-
-    handleLogin = () => {
-        this.setState({ isLoginShow: false })
-    }
 
     render() {
         return (
@@ -57,10 +58,7 @@ class Home extends Component {
                     inputValue={this.state.inputText}
                     users={this.state.users}
                 />
-                <GroupList groups={this.state.groups} />
-                <Login show={this.state.isLoginShow} loginUser={this.handleLogin} />
-                <BackDrop clicked={this.hendleBackDrop} show={this.state.isLoginShow} />
-
+                <GroupList groups={this.state.groups} updateGroup={this.handleGroupUpdate} />
             </>
         );
     }

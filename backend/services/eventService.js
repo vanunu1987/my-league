@@ -26,5 +26,6 @@ var resetData = async () => {
     } )])
     await _addEvents(...eventsFromApi)
 }
+console.log('khghjghjg');
 
 // resetData()

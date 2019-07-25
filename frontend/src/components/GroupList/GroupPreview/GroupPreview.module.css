@@ -1,4 +1,5 @@
 .preview-container{
+    position: relative;
     cursor: pointer;
     width: 90%;
     height: 400px;
@@ -22,6 +23,32 @@
     color: #424244e6;
     font-family: 'PT Sans Narrow', sans-serif;
     letter-spacing: 1px;
+}
+.preview-container button {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 5%;
+  right: 1%;
+  color: #db5858;
+  background: #ffffffc2;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  clip-path: polygon(0 35%, 35% 35%, 35% 0%, 65% 0%, 66% 35%, 100% 35%, 100% 67%, 65% 67%, 65% 100%, 35% 100%, 35% 67%, 0 67%);
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  background-color: #db5858;
+  transition: .3s ease;
+}
+
+.preview-container button:hover{
+    width: 40px;
+    height: 40px;
+    clip-path: circle(50% at 50% 50%);
+    color: white;
 }
 
 .group-image {

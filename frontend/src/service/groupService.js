@@ -13,13 +13,18 @@ const loadGroups = async () => {
 }
 
 const findGroupById = async (id)=> {
-    console.log('id : ',id);
     const response = await axios.get(`${BASE_URL}/${id}`)
     return response.data
-    
+}
+
+const addUserToGroup = async group => {
+    const response = await axios.post(`${BASE_URL}/user/add`,group)
+    console.log('response : ',response.data);
+    return response.data
 }
 
 export default {
     loadGroups,
-    findGroupById
+    findGroupById,
+    addUserToGroup
 }

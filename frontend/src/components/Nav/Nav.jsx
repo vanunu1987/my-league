@@ -4,8 +4,14 @@ import classes from './Nav.module.css'
 
 const nav = props => (
     <div className={classes.nav}>
-        <NavLink to="/">Home</NavLink>|
-        <NavLink to="/about">About</NavLink>
+        <section className={classes.links}>
+            <NavLink to="/">Home</NavLink>|
+            <NavLink to="/about">About</NavLink>
+        </section>
+        <section className={classes['nav-user']}>
+            <h4>{props.user && 'Hello ' + props.user.name}</h4>&nbsp;
+            <button onClick={props.logOutUser}>Log Out</button>
+        </section>
     </div>
 )
 
