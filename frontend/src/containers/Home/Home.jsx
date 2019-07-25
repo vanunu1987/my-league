@@ -10,50 +10,56 @@ import BackDrop from '../../components/UI/Backdrop/Backdrop'
 class Home extends Component {
     state = {
         groups: [],
-        users:[],
-        inputText:'',
+        users: [],
+        inputText: '',
         isLoginShow: true
     }
 
     async componentDidMount() {
         let groups = await groupService.loadGroups()
         let users = await userService.loadUsers()
-        this.setState({ groups,users })
+        this.setState({ groups, users })
     }
 
     inputChangeHandler = inputText => {
-        this.setState({inputText})
-        
+        this.setState({ inputText })
+
     }
-    
+
     searchGroupHandler = ev => {
         ev.preventDefault()
         this.setState(prevState => {
             let groups = prevState.groups.filter(group => group.name.toLowerCase().includes(prevState.inputText.toLowerCase()))
             return {
-                inputText:'',
+                inputText: '',
                 groups
             }
         })
     }
 
-    hendelBackDrop = ()=>{
-        let isLogdin = !this.state.isLoginShow
-        this.setState({isLoginShow: isLogdin })
+    hendleBackDrop = () => {
+        this.setState(prevState => {
+            let isLoginShow = !prevState.isLoginShow
+            return { isLoginShow }
+        })
+    }
+
+    handleLogin = () => {
+        this.setState({ isLoginShow: false })
     }
 
     render() {
         return (
             <>
-                <Header 
-                searchGroup={this.searchGroupHandler}
-                inputChange={this.inputChangeHandler}
-                inputValue={this.state.inputText}
-                users={this.state.users}
+                <Header
+                    searchGroup={this.searchGroupHandler}
+                    inputChange={this.inputChangeHandler}
+                    inputValue={this.state.inputText}
+                    users={this.state.users}
                 />
-                <GroupList groups={this.state.groups}/>
-                <Login show={this.state.isLoginShow}/>
-                <BackDrop clicked={this.hendelBackDrop} show={this.state.isLoginShow}/>
+                <GroupList groups={this.state.groups} />
+                <Login show={this.state.isLoginShow} loginUser={this.handleLogin} />
+                <BackDrop clicked={this.hendleBackDrop} show={this.state.isLoginShow} />
 
             </>
         );
