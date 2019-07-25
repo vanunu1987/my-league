@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 import Leadchart from '../../components/LeadChart/LeadChart'
 import groupService from '../../service/groupService';
+import classes from './GroupPage.module.css'
 class GroupPage extends Component {
     state = { 
         group: null
@@ -21,6 +22,9 @@ class GroupPage extends Component {
         return ( 
             <>
             <header>
+                <div className={classes.headeContiner}>
+
+                </div>
                 {img}
                 {name}
             </header>

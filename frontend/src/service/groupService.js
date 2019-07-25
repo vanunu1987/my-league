@@ -12,6 +12,7 @@ const loadGroups = async () => {
     return response.data
 }
 
+
 const findGroupById = async (id)=> {
     console.log('id : ',id);
     const response = await axios.get(`${BASE_URL}/${id}`)
@@ -21,5 +22,6 @@ const findGroupById = async (id)=> {
 
 export default {
     loadGroups,
-    findGroupById
+    findGroupById,
+    
 }
