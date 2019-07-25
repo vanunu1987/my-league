@@ -6,7 +6,7 @@ import SignUp from './SignUp/SignUp'
 
 class login extends Component {
     state = { 
-        login : true,
+        login : false,
         show: false,
         credentials: {
             name: null,
@@ -48,23 +48,33 @@ class login extends Component {
 
     render() { 
         let login = (  !this.state.login &&
-        <SignIn classes={classes} submitLogin={this.handleSubmitLogin} inputChange={this.handleInputs}/>
+        <SignIn classes={classes} 
+                submitLogin={this.handleSubmitLogin} 
+                inputChange={this.handleInputs}/>
 
             )
         let signup = ( this.state.login &&
-        <SignUp classes={classes} submitSignUp={this.handleSubmitSignUp} inputChange={this.handleInputs}/>
+        <SignUp classes={classes} 
+                submitSignUp={this.handleSubmitSignUp} 
+                inputChange={this.handleInputs}/>
 
         )    
-        let msg = (this.state.login) ? <span>Already have an account?&nbsp;</span> :<span>Don't have an account?&nbsp;</span>
-        let loginSignUp = <span className={classes.signupLink} onClick={this.handleLoginSignUp}>{this.state.login ? ' Login' : ' Sing in'} </span>
-        let body = this.props.show && <div className={classes.loginContainer}>
-        <section className={classes.formContainer}>
-            {login}
-            {signup}
-            {msg}
-            {loginSignUp}
-        </section>
-    </div>
+        let msg = (this.state.login) ? 
+                <span>Already have an account?&nbsp;</span> :
+                <span>Don't have an account?&nbsp;</span>;
+        let loginSignUp = <span className={classes.signupLink}
+                                onClick={this.handleLoginSignUp}>
+                                {this.state.login ? ' Login' : ' Sing in'} 
+                         </span>
+        let body = this.props.show && 
+        <div className={classes.loginContainer}>
+            <section className={classes.formContainer}>
+                {login}
+                {signup}
+                {msg}
+                {loginSignUp}
+            </section>
+        </div>
 
         return (
             <>

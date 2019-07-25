@@ -12,12 +12,15 @@ class Home extends Component {
         groups: [],
         users: [],
         inputText: '',
-        isLoginShow: true
+        isLoginShow: false
     }
 
     async componentDidMount() {
         let groups = await groupService.loadGroups()
         let users = await userService.loadUsers()
+        let teams = await groupService.loadTeams()
+        console.log(teams);
+        
         this.setState({ groups, users })
     }
 
@@ -51,6 +54,7 @@ class Home extends Component {
     render() {
         return (
             <>
+                <p>{this.state.isLoginShow}</p>
                 <Header
                     searchGroup={this.searchGroupHandler}
                     inputChange={this.inputChangeHandler}

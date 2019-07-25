@@ -1,5 +1,6 @@
 const axios = require('axios')
 const mongoService = require('./mongoService')
+console.log('running team service');
 
 const _addEvents = async (events) => {
     let db = await mongoService.connect()
@@ -12,7 +13,13 @@ const _clearEvents = async () => {
     console.log(response)
 }
 
-
+const _getEvents = async () =>{
+    let db = await mongoService.connect()
+    let response = await db.collection('events').find({}).project({'strAwayTeam':1,'strHomeTeam':1}).toArray()
+    console.log('hometaem :', response);
+    return response
+    
+}
 
 var resetData = async () => {
     await _clearEvents()
@@ -28,3 +35,5 @@ var resetData = async () => {
 }
 
 // resetData()
+
+module.exports = {_getEvents}

@@ -1,4 +1,5 @@
 const groupService = require('../services/groupService')
+const eventService = require('../services/eventService')
 const BASE = '/groups'
 
 
