@@ -10,7 +10,9 @@ class Home extends Component {
         groups: [],
         users: [],
         inputText: '',
+
         currUser: null
+
     }
 
     async componentDidMount() {
@@ -52,6 +54,7 @@ class Home extends Component {
     render() {
         return (
             <>
+                <p>{this.state.isLoginShow}</p>
                 <Header
                     searchGroup={this.searchGroupHandler}
                     inputChange={this.inputChangeHandler}

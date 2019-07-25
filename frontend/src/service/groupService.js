@@ -12,6 +12,7 @@ const loadGroups = async () => {
     return response.data
 }
 
+
 const findGroupById = async (id)=> {
     const response = await axios.get(`${BASE_URL}/${id}`)
     return response.data
