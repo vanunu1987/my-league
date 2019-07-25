@@ -43,6 +43,7 @@ class login extends Component {
     handleSubmitSignUp  = async (ev) => {
         ev.preventDefault()
         let res = await userService.signUpUser(this.state.credentials)
+        if (res) this.props.loginUser()
     }
 
     render() { 
