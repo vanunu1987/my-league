@@ -18,9 +18,6 @@ class Home extends Component {
     async componentDidMount() {
         let groups = await groupService.loadGroups()
         let users = await userService.loadUsers()
-        let teams = await groupService.loadTeams()
-        console.log(teams);
-        
         this.setState({ groups, users })
     }
 

@@ -6,7 +6,7 @@ const session = require('express-session')
 var history=require('connect-history-api-fallback')
 const addGroupRoutes = require('./routes/groupRoute')
 const addUserRoutes = require('./routes/userRoute')
-const addEventsRoutes = require('./routes/teamRoute')
+const addEventsRoutes = require('./routes/eventsRoute')
 require('dotenv').config()
 
 const eventService = require('./services/eventService')
