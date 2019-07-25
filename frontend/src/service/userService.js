@@ -14,12 +14,14 @@ const loadUsers = async () => {
         return user
     })
 }
-const logedinUser = async (data)=>{
-    const response = await axios.get(`${BASE_URL}`,data)
+const loginUser = async (credentials) => {
+    console.log('logedinUser credentials',credentials)
+    const response = await axios.put(`${BASE_URL}/login`,credentials)
     return response.data
 }
-const signinUser = async (data)=>{
-    const response = await axios.get(`${BASE_URL}`,data)
+const signUpUser = async (credentials) => {
+    console.log('signUpUser data',credentials)
+    const response = await axios.post(`${BASE_URL}/signup`,credentials)
     return response.data
 }
     
@@ -27,7 +29,7 @@ const signinUser = async (data)=>{
 
 export default {
     loadUsers,
-    logedinUser,
-    signinUser
+    loginUser,
+    signUpUser
 
 }
